@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Magno Beauty & Care — loja virtual de acessórios e cuidados pessoais. Carrinho de compras, kit completo com 15% OFF e frete grátis.">
+<title>Magno Beauty & Care | Loja Virtual</title>
+<style>
+:root{
+  --green:#29473c;
+  --green-dark:#1e352c;
+  --sage:#71816e;
+  --cream:#f7f5ef;
+  --ink:#292923;
+  --muted:#73736c;
+  --gold:#b38b45;
+  --gold-dark:#9a7434;
+  --red:#a43d32;
+  --line:#ecebe6;
+  --shadow-sm:0 6px 18px rgba(41,41,35,.07);
+  --shadow-md:0 18px 45px rgba(41,41,35,.13);
+  --shadow-lg:0 30px 80px rgba(20,20,16,.28);
+  --r:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#fff;color:var(--ink);font-family:Arial,'Segoe UI',sans-serif;line-height:1.55}
+body.no-scroll{overflow:hidden}
+h1,h2,h3,.logo{font-family:Georgia,'Times New Roman',serif;color:var(--green)}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:none;background:none}
+ul{list-style:none}
+input,select{font:inherit}
+.container{width:min(1180px,calc(100% - 40px));margin-inline:auto}
+
+/* ---------- Barra superior ---------- */
+.topbar{background:var(--green);color:#fff;font-size:11px;letter-spacing:1.3px;text-transform:uppercase;padding:9px 16px;text-align:center}
+.topbar b{color:#e8d9b6}
+
+/* ---------- Header ---------- */
+header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);transition:box-shadow .3s}
+header.scrolled{box-shadow:var(--shadow-sm)}
+.header-in{display:flex;align-items:center;justify-content:space-between;gap:22px;min-height:74px;padding:10px 0}
+.logo{font-size:25px;font-weight:bold;letter-spacing:1.5px;line-height:1.05}
+.logo small{display:block;font-family:Arial,sans-serif;font-size:9px;letter-spacing:3.5px;color:var(--sage);font-weight:bold;margin-top:3px}
+nav.main{display:flex;gap:26px;font-size:13px;font-weight:bold;color:#4a4a44}
+nav.main a{position:relative;padding:6px 0;color:#4a4a44}
+nav.main a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--gold);transition:width .25s}
+nav.main a:hover{color:var(--green)}
+nav.main a:hover::after{width:100%}
+.header-actions{display:flex;align-items:center;gap:10px}
+.icon-btn{width:42px;height:42px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--green);transition:.25s}
+.icon-btn:hover{border-color:var(--gold);color:var(--gold)}
+.cart-btn{position:relative;display:flex;align-items:center;gap:9px;background:var(--green);color:#fff;font-size:12.5px;font-weight:bold;letter-spacing:.6px;padding:0 18px;height:42px;border-radius:99px;transition:.25s}
+.cart-btn:hover{background:var(--green-dark)}
+.cart-badge{position:absolute;top:-5px;right:-4px;min-width:19px;height:19px;padding:0 5px;background:var(--gold);color:#221b0c;font-size:10.5px;font-weight:bold;border-radius:99px;display:flex;align-items:center;justify-content:center;transform:scale(0);transition:transform .25s cubic-bezier(.34,1.56,.64,1)}
+.cart-badge.on{transform:scale(1)}
+.cart-badge.pulse{animation:pulse .5s}
+@keyframes pulse{0%{transform:scale(1)}40%{transform:scale(1.45)}100%{transform:scale(1)}}
+.burger{display:none}
+
+/* ---------- Hero ---------- */
+.hero{background:linear-gradient(115deg,#e9eadf 0%,#f6f0e7 60%,#f3e9d8 100%);overflow:hidden;position:relative}
+.hero-in{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:48px;padding:64px 0 56px}
+.eyebrow{font-size:11px;letter-spacing:2.6px;color:var(--sage);font-weight:bold;text-transform:uppercase}
+.hero h1{font-size:clamp(34px,4.6vw,57px);line-height:1.07;margin:14px 0 16px}
+.hero-sub{color:#5d6058;font-size:15.5px;max-width:480px;margin-bottom:22px}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:#fff;padding:14px 26px;border-radius:99px;font-size:12.5px;font-weight:bold;letter-spacing:.8px;transition:.25s}
+.btn:hover{background:var(--green-dark);transform:translateY(-1px)}
+.btn.ghost{background:transparent;color:var(--green);border:1.5px solid var(--green)}
+.btn.ghost:hover{background:var(--green);color:#fff}
+.hero-rating{display:flex;align-items:center;gap:10px;margin-top:22px;font-size:12.5px;color:#5d6058}
+.stars{color:var(--gold);font-size:14px;letter-spacing:2px}
+.hero-media{position:relative}
+.hero-media img{width:100%;height:470px;object-fit:cover;border-radius:var(--r);box-shadow:var(--shadow-md)}
+.hero-chip{position:absolute;background:#fff;border-radius:12px;box-shadow:var(--shadow-md);padding:11px 15px;font-size:12px;font-weight:bold;color:var(--green);display:flex;align-items:center;gap:9px}
+.hero-chip .dot{width:8px;height:8px;border-radius:50%;background:var(--gold)}
+.hero-chip.c1{left:-18px;top:26px;animation:float 5s ease-in-out infinite}
+.hero-chip.c2{right:-14px;bottom:34px;animation:float 6s ease-in-out .8s infinite}
+.hero-chip small{display:block;font-size:10.5px;color:var(--muted);font-weight:normal}
+@keyframes float{50%{transform:translateY(-8px)}}
+
+/* ---------- Trust strip ---------- */
+.trust{background:#fff;border-bottom:1px solid var(--line)}
+.trust-in{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:18px 0}
+.trust-item{display:flex;align-items:center;gap:11px;font-size:12px;color:#4a4a44;justify-content:center}
+.trust-item svg{width:22px;height:22px;color:var(--gold);flex:none}
+.trust-item b{display:block;font-size:12.5px;color:var(--green)}
+.trust-item span{color:var(--muted);font-size:11px}
+
+/* ---------- Marquee ---------- */
+.marquee{overflow:hidden;background:var(--green);color:#efe9da;padding:10px 0;white-space:nowrap}
+.marquee-track{display:inline-flex;gap:44px;animation:mq 26s linear infinite;font-size:11px;letter-spacing:2.2px;text-transform:uppercase;font-weight:bold}
+.marquee-track i{font-style:normal;color:var(--gold)}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* ---------- Seções ---------- */
+.section{padding:72px 0}
+.section-head{text-align:center;max-width:640px;margin:0 auto 42px}
+.section-head h2{font-size:clamp(26px,3vw,36px);margin:8px 0 10px}
+.section-head p{color:var(--muted);font-size:14px}
+
+/* ---------- Coleção ---------- */
+.toolbar{display:flex;align-items:center;gap:14px;justify-content:space-between;margin-bottom:26px;flex-wrap:wrap}
+.searchbox{position:relative;flex:1;max-width:340px}
+.searchbox svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:var(--muted)}
+.searchbox input{width:100%;padding:11px 14px 11px 40px;border:1px solid #ddd;border-radius:99px;font-size:13px;background:#fff}
+.searchbox input:focus{outline:none;border-color:var(--gold)}
+.sortsel{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted)}
+.sortsel select{padding:10px 12px;border:1px solid #ddd;border-radius:8px;font-size:12.5px;background:#fff;color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}
+.card{border:1px solid var(--line);background:#fff;border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s}
+.card:hover{transform:translateY(-5px);box-shadow:var(--shadow-sm)}
+.card-media{position:relative;background:#f5f3ed;height:310px;overflow:hidden}
+.card-media>img{width:100%;height:100%;object-fit:contain;transition:transform .5s}
+.card:hover .card-media>img{transform:scale(1.04)}
+.badge{position:absolute;top:12px;left:12px;z-index:2;font-size:10px;font-weight:bold;letter-spacing:1px;padding:5px 10px;border-radius:99px;color:#fff}
+.badge.off{background:var(--red)}
+.badge.top{background:var(--gold);color:#221b0c;top:44px}
+.wish{position:absolute;top:10px;right:10px;z-index:2;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;color:#9a9a92;transition:.2s;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.wish:hover{color:var(--red)}
+.wish.on{color:var(--red)}
+.wish svg{width:17px;height:17px}
+.quickbtn{position:absolute;left:12px;right:12px;bottom:12px;z-index:2;background:rgba(255,255,255,.95);border:1px solid var(--line);border-radius:99px;padding:9px;font-size:11.5px;font-weight:bold;letter-spacing:.6px;color:var(--green);opacity:0;transform:translateY(6px);transition:.25s}
+.card:hover .quickbtn{opacity:1;transform:none}
+.card-body{padding:20px 20px 22px;display:flex;flex-direction:column;flex:1}
+.card-tag{font-size:10px;letter-spacing:1.4px;color:var(--sage);font-weight:bold;text-transform:uppercase}
+.card-body h3{font-size:21px;margin:5px 0 4px}
+.card-rate{display:flex;align-items:center;gap:7px;font-size:11.5px;color:var(--muted);margin-bottom:10px}
+.card-rate .stars{font-size:12px}
+.card-body>p{font-size:12.5px;color:#6b6b64;margin-bottom:12px}
+.card-price{margin-top:auto}
+.price-old{font-size:12px;color:#9a9a92;text-decoration:line-through}
+.price-row{display:flex;align-items:baseline;gap:8px}
+.price-new{font-size:26px;font-weight:bold;color:var(--gold);letter-spacing:-.5px;font-family:Georgia,serif}
+.price-inst{font-size:11px;color:var(--muted);margin-top:2px}
+.card-buy{display:flex;gap:9px;margin-top:14px}
+.stepper{display:flex;align-items:center;border:1px solid #ddd;border-radius:99px;overflow:hidden;flex:none}
+.stepper button{width:32px;height:40px;font-size:16px;font-weight:bold;color:var(--green);background:#fff}
+.stepper button:hover{background:var(--cream)}
+.stepper span{min-width:24px;text-align:center;font-size:13px;font-weight:bold}
+.btn-buy{flex:1;background:var(--green);color:#fff;border-radius:99px;font-size:12px;font-weight:bold;letter-spacing:.6px;padding:0 10px;height:40px;transition:.25s;white-space:nowrap}
+.btn-buy:hover{background:var(--green-dark)}
+.btn-buy.added{background:var(--gold);color:#221b0c}
+
+/* ---------- Kit ---------- */
+.kit{background:linear-gradient(115deg,#20362d,#29473c 55%,#315446);color:#fff;border-radius:calc(var(--r) + 6px);padding:0;overflow:hidden}
+.kit-in{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:40px;padding:46px 48px}
+.kit h2{color:#fff;font-size:clamp(26px,3vw,36px);margin-bottom:10px}
+.kit p{color:#d7e0d5;font-size:14px;max-width:440px}
+.kit-tiers{display:flex;flex-direction:column;gap:10px;margin:22px 0}
+.tier{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:10px;padding:11px 16px;font-size:13px}
+.tier b{color:#e8d9b6}
+.tier .t-off{margin-left:auto;font-weight:bold;color:#fff;font-size:13.5px;white-space:nowrap}
+.tier.hot{background:rgba(179,139,69,.16);border-color:rgba(212,196,158,.5)}
+.btn-kit{background:var(--gold);color:#221b0c;border-radius:99px;padding:15px 28px;font-size:12.5px;font-weight:bold;letter-spacing:.8px;transition:.25s}
+.btn-kit:hover{background:#c9a05a;transform:translateY(-1px)}
+.kit-visual{position:relative;height:360px}
+.kit-visual img{position:absolute;border-radius:14px;object-fit:cover;box-shadow:0 24px 60px rgba(0,0,0,.35);border:4px solid #fff}
+.kit-visual .k1{width:56%;height:62%;left:0;top:0;z-index:1}
+.kit-visual .k2{width:44%;height:50%;right:0;top:14%;z-index:2}
+.kit-visual .k3{width:48%;height:46%;left:16%;bottom:0;z-index:3}
+.kit-visual .save-tag{position:absolute;right:6%;bottom:6%;z-index:4;background:#fff;color:var(--green);border-radius:12px;padding:12px 16px;font-size:12px;font-weight:bold;box-shadow:var(--shadow-md)}
+.kit-visual .save-tag b{display:block;font-size:17px;color:var(--gold);font-family:Georgia,serif}
+
+/* ---------- Benefícios ---------- */
+.benefits{background:var(--cream)}
+.benefit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.benefit{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:30px 26px;text-align:center;transition:.3s}
+.benefit:hover{transform:translateY(-4px);box-shadow:var(--shadow-sm)}
+.benefit .ico{width:52px;height:52px;margin:0 auto 14px;border-radius:50%;background:var(--cream);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:24px}
+.benefit h3{font-size:19px;margin-bottom:6px}
+.benefit p{font-size:13px;color:var(--muted)}
+
+/* ---------- Depoimentos ---------- */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.testi{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:26px;display:flex;flex-direction:column;gap:12px;transition:.3s}
+.testi:hover{box-shadow:var(--shadow-sm);transform:translateY(-3px)}
+.testi .stars{font-size:14px}
+.testi q{font-size:13.5px;color:#5d6058;quotes:'“' '”'}
+.testi .who{display:flex;align-items:center;gap:11px;margin-top:auto}
+.avatar{width:38px;height:38px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:bold}
+.who b{display:block;font-size:12.5px;color:var(--green)}
+.who span{font-size:11px;color:var(--muted)}
+.verified{margin-left:auto;font-size:10px;color:var(--sage);font-weight:bold;letter-spacing:.4px}
+
+/* ---------- Como funciona ---------- */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;counter-reset:step}
+.step{position:relative;border:1px dashed #d9d6cb;border-radius:var(--r);padding:28px 24px;background:#fffdf8}
+.step::before{counter-increment:step;content:counter(step);position:absolute;top:-16px;left:22px;width:34px;height:34px;border-radius:50%;background:var(--gold);color:#221b0c;font-weight:bold;display:flex;align-items:center;justify-content:center;font-size:15px;font-family:Georgia,serif}
+.step h3{font-size:16.5px;margin:6px 0 6px}
+.step p{font-size:12.5px;color:var(--muted)}
+
+/* ---------- Contato ---------- */
+.contact{background:var(--green);color:#fff;text-align:center;padding:56px 20px;border-radius:calc(var(--r) + 6px)}
+.contact h2{color:#fff;font-size:clamp(24px,3vw,32px);margin-bottom:10px}
+.contact p{color:#d7e0d5;max-width:560px;margin:0 auto 22px;font-size:14px}
+.btn-wa{display:inline-flex;align-items:center;gap:9px;background:#fff;color:var(--green);border-radius:99px;padding:14px 28px;font-weight:bold;font-size:12.5px;letter-spacing:.6px;transition:.25s}
+.btn-wa:hover{background:var(--gold);color:#221b0c}
+.contact small{display:block;margin-top:14px;font-size:10.5px;color:#a9bbb0}
+
+/* ---------- FAQ ---------- */
+.faq{max-width:720px;margin:0 auto}
+.faq details{border-bottom:1px solid var(--line);padding:16px 4px}
+.faq summary{font-weight:bold;color:var(--green);cursor:pointer;font-size:14px;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:14px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:18px;color:var(--gold);transition:transform .25s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{color:#6b6b64;font-size:13px;margin-top:9px;max-width:640px}
+
+/* ---------- Newsletter ---------- */
+.news{background:var(--cream);border-radius:calc(var(--r) + 4px);padding:46px 40px;text-align:center}
+.news h2{font-size:26px;margin-bottom:8px}
+.news p{color:var(--muted);font-size:13.5px;margin-bottom:20px}
+.news form{display:flex;gap:10px;max-width:440px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+.news input{flex:1;min-width:220px;padding:13px 18px;border:1px solid #ddd;border-radius:99px;font-size:13px}
+.news input:focus{outline:none;border-color:var(--gold)}
+.news button{background:var(--green);color:#fff;padding:13px 26px;border-radius:99px;font-weight:bold;font-size:12.5px;letter-spacing:.5px}
+.news button:hover{background:var(--green-dark)}
+
+/* ---------- Footer ---------- */
+footer{background:#1c2a24;color:#e8ede9;margin-top:72px}
+.foot-in{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:34px;padding:52px 0 36px}
+.foot-in h4{color:#fff;font-size:13px;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px}
+.foot-in p{color:#a9bbb0;font-size:12.5px;margin-bottom:6px}
+.foot-in a{color:#c3d1c8;font-size:12.5px;display:block;padding:3px 0}
+.foot-in a:hover{color:var(--gold)}
+.pay-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.pay{background:#fff;color:#333;border-radius:5px;font-size:9.5px;font-weight:bold;letter-spacing:.4px;padding:5px 8px}
+.foot-base{border-top:1px solid #ffffff1f;padding:18px 0 26px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:11px;color:#8fa79a}
+
+/* ---------- Drawer carrinho ---------- */
+.overlay{position:fixed;inset:0;background:rgba(18,18,14,.5);backdrop-filter:blur(2px);z-index:80;opacity:0;pointer-events:none;transition:.3s}
+.overlay.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;height:100dvh;width:min(430px,100%);background:#fff;z-index:90;display:flex;flex-direction:column;transform:translateX(103%);transition:transform .42s cubic-bezier(.22,1,.36,1);box-shadow:var(--shadow-lg)}
+.drawer.on{transform:none}
+.drawer-head{display:flex;align-items:center;justify-content:space-between;padding:20px 22px;border-bottom:1px solid var(--line)}
+.drawer-head h3{font-size:19px}
+.drawer-head .n{font-size:12px;color:var(--muted);font-weight:normal;font-family:Arial,sans-serif}
+.x{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#666;transition:.2s;border:1px solid transparent}
+.x:hover{background:var(--cream);border-color:var(--line)}
+.drawer-body{flex:1;overflow-y:auto;padding:6px 22px}
+.drawer-empty{text-align:center;padding:70px 10px;color:var(--muted)}
+.drawer-empty svg{width:54px;height:54px;color:#d8d5ca;margin:0 auto 14px}
+.drawer-empty b{display:block;color:var(--green);font-size:16px;margin-bottom:6px;font-family:Georgia,serif}
+.drawer-empty p{font-size:12.5px;margin-bottom:18px}
+.co-item{display:flex;gap:13px;padding:15px 0;border-bottom:1px solid var(--line)}
+.co-item img{width:74px;height:74px;object-fit:cover;border-radius:9px;background:#f5f3ed;flex:none}
+.co-info{flex:1;min-width:0}
+.co-info b{display:block;font-size:13px;color:var(--green);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.co-info .u{font-size:11px;color:var(--muted);margin:2px 0 8px}
+.co-qty{display:flex;align-items:center;gap:7px}
+.co-qty button{width:26px;height:26px;border:1px solid #ddd;border-radius:7px;font-size:13px;font-weight:bold;color:var(--green);background:#fff}
+.co-qty button:hover{background:var(--cream)}
+.co-qty span{font-size:12.5px;font-weight:bold;min-width:16px;text-align:center}
+.co-remove{font-size:10.5px;color:var(--red);margin-left:6px;text-decoration:underline}
+.co-price{font-size:13px;font-weight:bold;color:var(--ink);white-space:nowrap;align-self:flex-start;margin-top:2px}
+.drawer-foot{border-top:1px solid var(--line);padding:16px 22px 20px;background:#fff}
+.prog{margin-bottom:11px}
+.prog p{font-size:11px;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+.prog p b{color:var(--green)}
+.prog .track{height:5px;background:#efede5;border-radius:99px;overflow:hidden;margin-top:5px}
+.prog .fill{height:100%;background:var(--gold);border-radius:99px;width:0;transition:width .45s ease}
+.prog.done p b{color:var(--gold)}
+.promo-row{display:flex;gap:8px;margin:12px 0 4px}
+.promo-row input{flex:1;padding:10px 13px;border:1px solid #ddd;border-radius:8px;font-size:12px;text-transform:uppercase}
+.promo-row input:focus{outline:none;border-color:var(--gold)}
+.promo-row button{background:var(--green);color:#fff;border-radius:8px;padding:0 15px;font-size:11.5px;font-weight:bold;letter-spacing:.4px}
+.promo-row button:hover{background:var(--green-dark)}
+.promo-msg{font-size:11px;margin-bottom:6px}
+.promo-msg.ok{color:var(--sage);font-weight:bold}
+.promo-msg.err{color:var(--red)}
+.sumrow{display:flex;justify-content:space-between;font-size:12.5px;color:var(--muted);padding:3px 0}
+.sumrow b{color:var(--ink);font-weight:bold}
+.sumrow.disc b{color:var(--sage)}
+.sumrow.total{border-top:1px solid var(--line);margin-top:8px;padding-top:10px;font-size:15px;color:var(--ink)}
+.sumrow.total b{color:var(--green);font-size:18px;font-family:Georgia,serif}
+.btn-check{width:100%;background:var(--gold);color:#221b0c;border-radius:99px;padding:15px;font-size:13px;font-weight:bold;letter-spacing:.6px;margin-top:12px;transition:.25s}
+.btn-check:hover{background:#c9a05a}
+.btn-check:disabled{opacity:.5;cursor:not-allowed}
+.keep{width:100%;text-align:center;font-size:11.5px;color:var(--muted);margin-top:10px;text-decoration:underline}
+
+/* ---------- Modais ---------- */
+.modal{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:18px;visibility:hidden;pointer-events:none}
+.modal.on{visibility:visible;pointer-events:auto}
+.modal-bg{position:absolute;inset:0;background:rgba(18,18,14,.55);backdrop-filter:blur(2px);opacity:0;transition:.3s}
+.modal.on .modal-bg{opacity:1}
+.modal-box{position:relative;background:#fff;border-radius:16px;width:100%;max-width:560px;max-height:min(88vh,760px);overflow-y:auto;box-shadow:var(--shadow-lg);transform:translateY(16px) scale(.985);opacity:0;transition:.3s cubic-bezier(.22,1,.36,1)}
+.modal.on .modal-box{transform:none;opacity:1}
+.modal-box.wide{max-width:860px}
+.modal-head{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-bottom:1px solid var(--line);position:sticky;top:0;background:#fff;z-index:2;border-radius:16px 16px 0 0}
+.modal-head h3{font-size:18px}
+.quick-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;padding:24px}
+.quick-media{background:#f5f3ed;border-radius:12px;overflow:hidden;height:330px;display:flex;align-items:center;justify-content:center}
+.quick-media img{width:100%;height:100%;object-fit:contain}
+.quick-info .card-tag{font-size:10px}
+.quick-info h3{font-size:24px;margin:6px 0 6px}
+.quick-info .card-rate{margin-bottom:10px}
+.quick-info>p{font-size:13px;color:#6b6b64;margin-bottom:12px}
+.quick-info .price-new{font-size:28px}
+.quick-info .price-inst{font-size:11.5px;color:var(--muted);margin:2px 0 16px}
+.quick-hl{font-size:12px;color:#6b6b64;margin-bottom:16px}
+.quick-hl li{padding:2px 0 2px 16px;position:relative}
+.quick-hl li::before{content:"✓";position:absolute;left:0;color:var(--gold);font-weight:bold}
+.quick-actions{display:flex;gap:9px}
+.quick-actions .stepper button{height:44px}
+.quick-actions .btn-buy{height:44px;font-size:12.5px}
+
+/* Checkout */
+.check-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:0}
+.check-form{padding:22px 24px 26px}
+.check-form h4{font-size:12px;letter-spacing:1.4px;text-transform:uppercase;color:var(--sage);margin:14px 0 10px}
+.check-form h4:first-child{margin-top:0}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fgroup{margin-bottom:11px}
+.fgroup label{display:block;font-size:11px;font-weight:bold;color:#565650;margin-bottom:4px}
+.fgroup input{width:100%;padding:10px 12px;border:1px solid #ddd;border-radius:8px;font-size:13px}
+.fgroup input:focus{outline:none;border-color:var(--gold)}
+.pay-opts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.pay-opt{border:1px solid #ddd;border-radius:9px;padding:9px 6px;text-align:center;font-size:10.5px;font-weight:bold;color:#565650;cursor:pointer;transition:.2s;background:#fff}
+.pay-opt input{display:none}
+.pay-opt.on{border-color:var(--gold);background:#fdf8ee;color:var(--green);box-shadow:0 0 0 1px var(--gold) inset}
+.check-sum{background:var(--cream);padding:22px 24px;border-left:1px solid var(--line);border-radius:0 0 16px 0}
+.check-sum h4{font-size:12px;letter-spacing:1.4px;text-transform:uppercase;color:var(--sage);margin-bottom:12px}
+.check-sum .sumrow.total b{font-size:20px}
+.check-items{max-height:170px;overflow-y:auto;margin-bottom:10px;border-bottom:1px solid var(--line);padding-bottom:8px}
+.check-item{display:flex;justify-content:space-between;gap:8px;font-size:11.5px;color:#565650;padding:3px 0}
+.check-item b{font-weight:bold;color:var(--ink);white-space:nowrap}
+.co-submit{width:100%;background:var(--green);color:#fff;border-radius:99px;padding:14px;font-size:13px;font-weight:bold;letter-spacing:.5px;margin-top:12px}
+.co-submit:hover{background:var(--green-dark)}
+.success{padding:46px 30px;text-align:center}
+.success .ok{width:74px;height:74px;border-radius:50%;background:#eef3ee;color:var(--green);display:flex;align-items:center;justify-content:center;margin:0 auto 18px}
+.success .ok svg{width:36px;height:36px}
+.success h3{font-size:24px;margin-bottom:8px}
+.success p{color:var(--muted);font-size:13.5px;margin-bottom:8px}
+.success .ord{background:var(--cream);border-radius:10px;padding:12px;font-size:12.5px;margin:16px auto;max-width:320px;color:#565650}
+.success .ord b{color:var(--green)}
+
+/* ---------- Toast ---------- */
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,16px);background:var(--green);color:#fff;font-size:12.5px;font-weight:bold;padding:12px 20px;border-radius:99px;box-shadow:var(--shadow-md);z-index:120;opacity:0;pointer-events:none;transition:.3s;max-width:calc(100vw - 40px);text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* ---------- Reveal ---------- */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
+.reveal.vis{opacity:1;transform:none}
+
+/* ---------- Responsivo ---------- */
+@media (max-width:960px){
+  nav.main{display:none}
+  .burger{display:flex}
+  .hero-in{grid-template-columns:1fr;gap:30px;padding:44px 0}
+  .hero-media img{height:360px}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .kit-in{grid-template-columns:1fr;padding:38px 30px}
+  .kit-visual{height:300px;order:-1}
+  .benefit-grid,.testi-grid,.steps{grid-template-columns:1fr}
+  .foot-in{grid-template-columns:1fr 1fr}
+  .trust-in{grid-template-columns:repeat(2,1fr);gap:14px;padding:16px 0}
+  .check-grid{grid-template-columns:1fr}
+  .check-sum{border-left:none;border-top:1px solid var(--line);border-radius:0 0 16px 16px}
+  .quick-grid{grid-template-columns:1fr;gap:18px}
+  .quick-media{height:260px}
+}
+@media (max-width:620px){
+  .grid{grid-template-columns:1fr}
+  .header-actions .icon-btn{display:none}
+  .hero-chip.c1{left:8px}
+  .hero-chip.c2{right:8px}
+  .frow{grid-template-columns:1fr}
+  .pay-opts{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">Frete grátis no kit completo · <b>15% OFF</b> levando os 3 produtos · Parcele em até 3x sem juros</div>
+
+<header id="header">
+  <div class="container header-in">
+    <button class="icon-btn burger" id="burger" aria-label="Menu">
+      <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+    <a class="logo" href="#inicio">MAGNO<small>BEAUTY &amp; CARE</small></a>
+    <nav class="main">
+      <a href="#colecao">Produtos</a>
+      <a href="#kit">Kit com desconto</a>
+      <a href="#beneficios">Nossa proposta</a>
+      <a href="#depoimentos">Depoimentos</a>
+      <a href="#duvidas">Dúvidas</a>
+    </nav>
+    <div class="header-actions">
+      <a class="icon-btn" href="#colecao" aria-label="Buscar produtos">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5 21 21"/></svg>
+      </a>
+      <button class="cart-btn" id="cartBtn">
+        <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h2l2.3 12.3a2 2 0 0 0 2 1.7h7.6a2 2 0 0 0 2-1.6L21 8H6"/><circle cx="9.5" cy="20.6" r="1.4" fill="currentColor" stroke="none"/><circle cx="17.6" cy="20.6" r="1.4" fill="currentColor" stroke="none"/></svg>
+        Carrinho
+        <span class="cart-badge" id="cartBadge">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="container hero-in">
+    <div>
+      <div class="eyebrow">Sua rotina, seu momento</div>
+      <h1>Pequenos cuidados.<br>Mais carinho com você.</h1>
+      <p class="hero-sub">Acessórios e produtos de beleza selecionados para a sua rotina de autocuidado. Leve o kit completo e ganhe <b>15% OFF + frete grátis</b>.</p>
+      <div class="hero-ctas">
+        <a class="btn" href="#colecao">Conhecer a coleção</a>
+        <a class="btn ghost" href="#kit">Ver desconto do kit</a>
+      </div>
+      <div class="hero-rating">
+        <span class="stars">★★★★★</span>
+        <span><b>4,9/5</b> · +700 clientes satisfeitas</span>
+      </div>
+    </div>
+    <div class="hero-media">
+      <img src="imagens/colar_01_no_pescoco.jpg" alt="Colar dourado Magno em uso">
+      <div class="hero-chip c1"><span class="dot"></span><div>Kit completo<small>15% OFF + frete grátis</small></div></div>
+      <div class="hero-chip c2"><span class="dot"></span><div>Colar Magno<small>R$ 39,90 · 3x sem juros</small></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="trust">
+  <div class="container trust-in">
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2.5l8 3v6c0 5-3.4 8.6-8 10-4.6-1.4-8-5-8-10v-6z"/><path d="M8.8 12l2.2 2.2 4.2-4.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div><b>Compra segura</b><span>Dados criptografados</span></div>
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1.5 5.5h12v11h-12z"/><path d="M13.5 9.5h4l3.5 4v3h-7.5"/><circle cx="6" cy="18.6" r="1.7" fill="currentColor" stroke="none"/><circle cx="16.6" cy="18.6" r="1.7" fill="currentColor" stroke="none"/></svg>
+      <div><b>Envio em 24h</b><span>Para todo o Brasil</span></div>
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.4-5.7"/><path d="M20 4v5h-5"/></svg>
+      <div><b>Troca fácil</b><span>Em até 30 dias</span></div>
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="5" width="19" height="14" rx="2.2"/><path d="M2.5 9.5h19"/></svg>
+      <div><b>Até 3x sem juros</b><span>Cartão, PIX ou boleto</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track" id="mqTrack">
+    <span>Frete grátis acima de R$ 149 <i>✦</i></span>
+    <span>Kit completo com 15% OFF <i>✦</i></span>
+    <span>Pagamento 100% seguro <i>✦</i></span>
+    <span>Troca fácil em 30 dias <i>✦</i></span>
+    <span>Envio em até 24h <i>✦</i></span>
+    <span>Parcele em 3x sem juros <i>✦</i></span>
+  </div>
+</div>
+
+<section class="section" id="colecao">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Escolha seu favorito</div>
+      <h2>Nossa coleção</h2>
+      <p>Conheça os detalhes de cada produto e adicione ao carrinho.</p>
+    </div>
+    <div class="toolbar reveal">
+      <div class="searchbox">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5 21 21"/></svg>
+        <input id="searchInput" type="search" placeholder="Buscar produto..." aria-label="Buscar produto">
+      </div>
+      <div class="sortsel">
+        <label for="sortSelect">Ordenar por:</label>
+        <select id="sortSelect">
+          <option value="pop">Mais populares</option>
+          <option value="asc">Menor preço</option>
+          <option value="desc">Maior preço</option>
+        </select>
+      </div>
+    </div>
+    <div class="grid" id="productGrid"></div>
+  </div>
+</section>
+
+<section class="section" id="kit" style="padding-top:0">
+  <div class="container">
+    <div class="kit reveal">
+      <div class="kit-in">
+        <div>
+          <div class="eyebrow" style="color:#d4c49e">Combo inteligente</div>
+          <h2>Monte seu kit e economize</h2>
+          <p>Quanto mais produtos da linha no carrinho, maior o desconto. O desconto é aplicado automaticamente ao finalizar.</p>
+          <div class="kit-tiers">
+            <div class="tier"><b>1 produto</b><span class="t-off">Sem desconto</span></div>
+            <div class="tier"><b>2 produtos</b><span class="t-off">5% OFF</span></div>
+            <div class="tier hot"><b>3 produtos (kit completo)</b><span class="t-off">15% OFF + Frete Grátis</span></div>
+          </div>
+          <button class="btn-kit" onclick="addKitCompleto()">Adicionar kit completo ao carrinho →</button>
+        </div>
+        <div class="kit-visual">
+          <img class="k1" src="imagens/colar_02_completo.jpg" alt="Colar Magno">
+          <img class="k2" src="imagens/creme_01_frente.jpg" alt="Creme para pescoço">
+          <img class="k3" src="imagens/massageador_01_produto.jpg" alt="Massageador facial">
+          <div class="save-tag">Economize até<b>R$ 22,45 + frete</b></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section benefits" id="beneficios">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Magno Beauty &amp; Care</div>
+      <h2>Seu momento de autocuidado</h2>
+      <p>Produtos para acompanhar diferentes momentos da sua rotina.</p>
+    </div>
+    <div class="benefit-grid reveal">
+      <div class="benefit"><div class="ico">✧</div><h3>Estilo</h3><p>Acessórios que complementam seu visual com personalidade.</p></div>
+      <div class="benefit"><div class="ico">♡</div><h3>Cuidado diário</h3><p>Opções para incluir mais atenção e carinho na sua rotina.</p></div>
+      <div class="benefit"><div class="ico">◇</div><h3>Praticidade</h3><p>Detalhes claros dos produtos para você escolher com tranquilidade.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="depoimentos">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Quem já comprou aprova</div>
+      <h2>O que dizem nossas clientes</h2>
+    </div>
+    <div class="testi-grid reveal">
+      <div class="testi">
+        <span class="stars">★★★★★</span>
+        <q>O colar é delicado e combina com tudo. Recebi elogios no trabalho no mesmo dia.</q>
+        <div class="who"><div class="avatar">A</div><div><b>Ana Souza</b><span>São Paulo, SP</span></div><span class="verified">✓ Compra verificada</span></div>
+      </div>
+      <div class="testi">
+        <span class="stars">★★★★★</span>
+        <q>Creme maravilhoso. A pele do pescoço ficou muito mais macia depois de algumas semanas de uso.</q>
+        <div class="who"><div class="avatar">C</div><div><b>Carla Mendes</b><span>Rio de Janeiro, RJ</span></div><span class="verified">✓ Compra verificada</span></div>
+      </div>
+      <div class="testi">
+        <span class="stars">★★★★★</span>
+        <q>O massageador virou meu ritual da noite. Relaxa de verdade e a pele fica com outra aparência.</q>
+        <div class="who"><div class="avatar">J</div><div><b>Juliana Prado</b><span>Belo Horizonte, MG</span></div><span class="verified">✓ Compra verificada</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="como-funciona" style="padding-top:0">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Simples assim</div>
+      <h2>Como funciona</h2>
+    </div>
+    <div class="steps reveal">
+      <div class="step"><h3>Escolha seus favoritos</h3><p>Adicione os produtos ao carrinho na quantidade que quiser.</p></div>
+      <div class="step"><h3>Ganhe desconto no kit</h3><p>Com 2 produtos você recebe 5% OFF. Com os 3, 15% OFF e frete grátis.</p></div>
+      <div class="step"><h3>Finalize com segurança</h3><p>Pague com cartão, PIX ou boleto e acompanhe a entrega.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contato" style="padding-top:0">
+  <div class="container">
+    <div class="contact reveal">
+      <h2>Ficou com alguma dúvida?</h2>
+      <p>Fale com nossa equipe para consultar valores, disponibilidade, formas de pagamento e entrega. Respondemos em horário comercial, de segunda a sexta.</p>
+      <a class="btn-wa" href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20os%20produtos%20Magno." target="_blank" rel="noopener">Falar pelo WhatsApp →</a>
+      <small>Número de WhatsApp de demonstração — substitua pelo contato oficial da loja.</small>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="duvidas" style="padding-top:0">
+  <div class="container">
+    <div class="section-head reveal">
+      <h2>Perguntas frequentes</h2>
+      <p>Informações importantes antes de comprar.</p>
+    </div>
+    <div class="faq reveal">
+      <details open><summary>Como funciona o desconto do kit?</summary><p>O desconto é aplicado automaticamente no carrinho: 5% OFF com 2 produtos diferentes e 15% OFF + frete grátis com os 3 produtos da linha.</p></details>
+      <details><summary>Posso alterar as quantidades no carrinho?</summary><p>Sim. No carrinho você pode aumentar ou diminuir a quantidade de cada item, ou removê-lo, antes de finalizar a compra.</p></details>
+      <details><summary>Quais são as formas de pagamento?</summary><p>Cartão de crédito (até 3x sem juros), PIX e boleto bancário, escolhidos no checkout.</p></details>
+      <details><summary>Qual é o prazo de entrega?</summary><p>Enviamos em até 24h úteis após a confirmação do pagamento. O prazo de transporte varia conforme a região.</p></details>
+      <details><summary>Os produtos substituem tratamentos médicos?</summary><p>Não. Cosméticos e acessórios não substituem avaliação, diagnóstico ou orientação de profissionais de saúde.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="news reveal">
+      <h2>Novidades direto no seu e-mail</h2>
+      <p>Cadastre-se e receba lançamentos, dicas de autocuidado e ofertas exclusivas.</p>
+      <form id="newsForm">
+        <input type="email" placeholder="Seu melhor e-mail" required aria-label="E-mail">
+        <button type="submit">Quero receber</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="foot-in">
+      <div>
+        <div class="logo" style="color:#fff">MAGNO<small style="color:#8fa79a">BEAUTY &amp; CARE</small></div>
+        <p style="margin-top:12px">Beleza, estilo e autocuidado. Produtos selecionados para acompanhar a sua rotina.</p>
+        <div class="pay-row">
+          <span class="pay">PIX</span><span class="pay">VISA</span><span class="pay">MASTERCARD</span><span class="pay">ELO</span><span class="pay">HIPERCARD</span><span class="pay">BOLETO</span>
+        </div>
+      </div>
+      <div>
+        <h4>Loja</h4>
+        <a href="#colecao">Produtos</a>
+        <a href="#kit">Kit com desconto</a>
+        <a href="#beneficios">Nossa proposta</a>
+        <a href="#depoimentos">Depoimentos</a>
+      </div>
+      <div>
+        <h4>Atendimento</h4>
+        <a href="#contato">WhatsApp</a>
+        <a href="#duvidas">Dúvidas frequentes</a>
+        <a href="#duvidas">Entrega e prazos</a>
+        <a href="#duvidas">Trocas e devoluções</a>
+      </div>
+      <div>
+        <h4>Informações</h4>
+        <a href="#">Política de troca</a>
+        <a href="#">Política de privacidade</a>
+        <a href="#">Termos de compra</a>
+        <a href="#">Segurança</a>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© 2026 Magno Beauty &amp; Care. Todos os direitos reservados.</span>
+      <span>CNPJ 00.000.000/0001-00 · São Paulo/SP</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Carrinho -->
+<div class="overlay" id="overlay" onclick="fecharCarrinho()"></div>
+<aside class="drawer" id="drawer" aria-label="Carrinho de compras">
+  <div class="drawer-head">
+    <h3>Seu carrinho <span class="n" id="drawerCount"></span></h3>
+    <button class="x" onclick="fecharCarrinho()" aria-label="Fechar">
+      <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+  </div>
+  <div class="drawer-body" id="drawerBody"></div>
+  <div class="drawer-foot" id="drawerFoot" style="display:none">
+    <div class="prog" id="kitProg">
+      <p id="kitProgText"></p>
+      <div class="track"><div class="fill" id="kitProgFill"></div></div>
+    </div>
+    <div class="prog" id="shipProg">
+      <p id="shipProgText"></p>
+      <div class="track"><div class="fill" id="shipProgFill"></div></div>
+    </div>
+    <div class="promo-row">
+      <input id="promoInput" placeholder="Cupom de desconto" aria-label="Cupom de desconto">
+      <button id="promoBtn" onclick="aplicarCupom()">Aplicar</button>
+    </div>
+    <div class="promo-msg" id="promoMsg"></div>
+    <div class="sumrow"><span>Subtotal</span><b id="sumSub">R$ 0,00</b></div>
+    <div class="sumrow disc" id="rowKit" style="display:none"><span>Desconto kit <span id="kitPct"></span></span><b id="sumKit">- R$ 0,00</b></div>
+    <div class="sumrow disc" id="rowCupom" style="display:none"><span>Cupom MAGNO10</span><b id="sumCupom">- R$ 0,00</b></div>
+    <div class="sumrow"><span>Frete</span><b id="sumFrete">R$ 0,00</b></div>
+    <div class="sumrow total"><span>Total</span><b id="sumTotal">R$ 0,00</b></div>
+    <button class="btn-check" id="btnCheckout" onclick="abrirCheckout()">Finalizar compra</button>
+    <button class="keep" onclick="fecharCarrinho()">Continuar comprando</button>
+  </div>
+</aside>
+
+<!-- Quick view -->
+<div class="modal" id="quickModal">
+  <div class="modal-bg" onclick="fecharQuick()"></div>
+  <div class="modal-box wide">
+    <div class="modal-head"><h3>Detalhes do produto</h3>
+      <button class="x" onclick="fecharQuick()" aria-label="Fechar"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <div class="quick-grid" id="quickGrid"></div>
+  </div>
+</div>
+
+<!-- Checkout -->
+<div class="modal" id="checkoutModal">
+  <div class="modal-bg" onclick="fecharCheckout()"></div>
+  <div class="modal-box wide">
+    <div class="modal-head"><h3>Finalizar compra</h3>
+      <button class="x" onclick="fecharCheckout()" aria-label="Fechar"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <div id="checkoutBody">
+      <div class="check-grid">
+        <form class="check-form" id="checkoutForm">
+          <h4>Seus dados</h4>
+          <div class="fgroup"><label>Nome completo *</label><input required autocomplete="name" placeholder="Maria da Silva"></div>
+          <div class="frow">
+            <div class="fgroup"><label>E-mail *</label><input type="email" required autocomplete="email" placeholder="voce@email.com"></div>
+            <div class="fgroup"><label>Telefone *</label><input required autocomplete="tel" placeholder="(11) 90000-0000"></div>
+          </div>
+          <h4>Entrega</h4>
+          <div class="frow">
+            <div class="fgroup"><label>CEP *</label><input required placeholder="00000-000"></div>
+            <div class="fgroup"><label>Número *</label><input required placeholder="123"></div>
+          </div>
+          <div class="fgroup"><label>Endereço *</label><input required placeholder="Rua, avenida..."></div>
+          <div class="frow">
+            <div class="fgroup"><label>Bairro *</label><input required placeholder="Centro"></div>
+            <div class="fgroup"><label>Cidade / UF *</label><input required placeholder="São Paulo / SP"></div>
+          </div>
+          <h4>Pagamento</h4>
+          <div class="pay-opts" id="payOpts">
+            <label class="pay-opt on"><input type="radio" name="pag" value="PIX" checked>PIX</label>
+            <label class="pay-opt"><input type="radio" name="pag" value="Cartão de crédito">Cartão · 3x</label>
+            <label class="pay-opt"><input type="radio" name="pag" value="Boleto">Boleto</label>
+          </div>
+          <button type="submit" class="co-submit">Confirmar pedido →</button>
+        </form>
+        <div class="check-sum">
+          <h4>Resumo do pedido</h4>
+          <div class="check-items" id="checkItems"></div>
+          <div class="sumrow"><span>Subtotal</span><b id="coSub">R$ 0,00</b></div>
+          <div class="sumrow disc" id="coRowKit" style="display:none"><span>Desconto kit</span><b id="coKit">- R$ 0,00</b></div>
+          <div class="sumrow disc" id="coRowCupom" style="display:none"><span>Cupom</span><b id="coCupom">- R$ 0,00</b></div>
+          <div class="sumrow"><span>Frete</span><b id="coFrete">R$ 0,00</b></div>
+          <div class="sumrow total"><span>Total</span><b id="coTotal">R$ 0,00</b></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============ Dados ============ */
+const PRODUTOS = [
+  { id:'colar', nome:'Colar Magno', tag:'Elegância e sofisticação', preco:39.90, de:89.90, nota:4.9, avaliacoes:212, vendidos:'1,2 mil',
+    desc:'Destaque sua beleza com um acessório moderno e elegante. Design sofisticado com acabamento dourado, versátil para ocasiões casuais e elegantes.',
+    destaques:['Design moderno e sofisticado','Acabamento dourado elegante','Versátil para diversas ocasiões','Valoriza o colo e complementa o visual','Excelente opção para presentear'],
+    img:'imagens/colar_01_no_pescoco.jpg', top:true },
+  { id:'creme', nome:'Creme para Pescoço', tag:'Cuidado e hidratação', preco:49.90, de:89.90, nota:4.8, avaliacoes:167, vendidos:'890',
+    desc:'Cuidado especial para a pele do pescoço. Hidratação profunda, firmeza, redução de rugas e combate à flacidez. Frasco de 50g.',
+    destaques:['Auxilia na hidratação da pele','Ajuda na aparência da textura da pele','Firma a pele e combate a flacidez','Fácil aplicação','Ideal para cuidados diários'],
+    img:'imagens/creme_01_frente.jpg', top:false },
+  { id:'massageador', nome:'Massageador Facial', tag:'Seu momento de autocuidado', preco:59.90, de:99.90, nota:4.9, avaliacoes:341, vendidos:'1,6 mil',
+    desc:'Design moderno e ergonômico para massagem facial. Reduz rugas e linhas de expressão, melhora a firmeza e estimula a circulação.',
+    destaques:['Design moderno e elegante','Fácil de manusear','Auxilia na massagem facial','Sensação de relaxamento','Ideal para rotina de skincare'],
+    img:'imagens/massageador_01_produto.jpg', top:true }
+];
+const CUPOM = 'MAGNO10';
+const CUPOM_PCT = 0.10;
+const FRETE_PADRAO = 12.90;
+const FRETE_GRATIS_MIN = 149;
+
+/* ============ Estado ============ */
+let carrinho = {};
+let cupomAtivo = false;
+const qtdCard = {};
+const favoritos = new Set();
+
+try{
+  const saved = JSON.parse(localStorage.getItem('magno_carrinho_v2') || '{}');
+  if(saved && typeof saved === 'object') carrinho = saved;
+}catch(e){ carrinho = {}; }
+
+function salvarCarrinho(){
+  try{ localStorage.setItem('magno_carrinho_v2', JSON.stringify(carrinho)); }catch(e){}
+}
+
+/* ============ Utilidades ============ */
+const fmt = v => 'R$ ' + v.toLocaleString('pt-BR', {minimumFractionDigits:2, maximumFractionDigits:2});
+const norm = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+
+function itens(){ return Object.entries(carrinho).filter(([,q]) => q > 0); }
+function qtdTotal(){ return itens().reduce((s,[,q]) => s + q, 0); }
+function subtotal(){ return itens().reduce((s,[id,q]) => s + PRODUTOS.find(p=>p.id===id).preco * q, 0); }
+function tiposUnicos(){ return itens().length; }
+function taxaKit(){ const n = tiposUnicos(); return n >= 3 ? 0.15 : n === 2 ? 0.05 : 0; }
+function descontoKit(){ return subtotal() * taxaKit(); }
+function descontoCupom(){ return cupomAtivo ? (subtotal() - descontoKit()) * CUPOM_PCT : 0; }
+function baseComDescontos(){ return subtotal() - descontoKit() - descontoCupom(); }
+function frete(){
+  if(tiposUnicos() >= 3) return 0;
+  if(baseComDescontos() >= FRETE_GRATIS_MIN) return 0;
+  return itens().length ? FRETE_PADRAO : 0;
+}
+function total(){ return Math.max(0, baseComDescontos() + frete()); }
+
+function toast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toast._t);
+  toast._t = setTimeout(() => t.classList.remove('show'), 2600);
+}
+
+/* ============ Produtos ============ */
+function renderProdutos(){
+  const grid = document.getElementById('productGrid');
+  const busca = norm(document.getElementById('searchInput').value.trim());
+  const ordem = document.getElementById('sortSelect').value;
+  let lista = PRODUTOS.filter(p => !busca || norm(p.nome + ' ' + p.tag).includes(busca));
+  if(ordem === 'asc') lista = [...lista].sort((a,b) => a.preco - b.preco);
+  if(ordem === 'desc') lista = [...lista].sort((a,b) => b.preco - a.preco);
+  if(ordem === 'pop') lista = [...lista].sort((a,b) => b.avaliacoes - a.avaliacoes);
+
+  grid.innerHTML = lista.length ? lista.map(p => {
+    const off = Math.round((1 - p.preco / p.de) * 100);
+    if(qtdCard[p.id] === undefined) qtdCard[p.id] = 1;
+    const fav = favoritos.has(p.id);
+    return `
+    <article class="card reveal vis" data-id="${p.id}">
+      <div class="card-media">
+        <span class="badge off">-${off}%</span>
+        ${p.top ? '<span class="badge top">MAIS VENDIDO</span>' : ''}
+        <button class="wish ${fav?'on':''}" onclick="toggleFav('${p.id}', this)" aria-label="Favoritar">
+          <svg viewBox="0 0 24 24" fill="${fav?'currentColor':'none'}" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 20.5S3.5 15 3.5 9.2C3.5 6.3 5.8 4 8.6 4c1.9 0 3 .9 3.4 1.7.4-.8 1.5-1.7 3.4-1.7 2.8 0 5.1 2.3 5.1 5.2 0 5.8-8.5 11.3-8.5 11.3z"/></svg>
+        </button>
+        <img src="${p.img}" alt="${p.nome}">
+        <button class="quickbtn" onclick="abrirQuick('${p.id}')">Visão rápida</button>
+      </div>
+      <div class="card-body">
+        <div class="card-tag">${p.tag}</div>
+        <h3>${p.nome}</h3>
+        <div class="card-rate">
+          <span class="stars">★★★★★</span>
+          <span>${p.nota.toString().replace('.', ',')} (${p.avaliacoes}) · ${p.vendidos} vendidos</span>
+        </div>
+        <p>${p.desc}</p>
+        <div class="card-price">
+          <span class="price-old">De ${fmt(p.de)}</span>
+          <div class="price-row"><span class="price-new">${fmt(p.preco)}</span></div>
+          <div class="price-inst">ou 3x de ${fmt(p.preco/3)} sem juros</div>
+        </div>
+        <div class="card-buy">
+          <div class="stepper">
+            <button onclick="mudarQtdCard('${p.id}',-1)" aria-label="Diminuir">−</button>
+            <span id="qtd-${p.id}">${qtdCard[p.id]}</span>
+            <button onclick="mudarQtdCard('${p.id}',1)" aria-label="Aumentar">+</button>
+          </div>
+          <button class="btn-buy" id="buy-${p.id}" onclick="comprarCard('${p.id}', this)">Adicionar ao carrinho</button>
+        </div>
+      </div>
+    </article>`;
+  }).join('') : '<p style="grid-column:1/-1;text-align:center;color:#73736c;padding:30px 0">Nenhum produto encontrado para essa busca.</p>';
+}
+
+function mudarQtdCard(id, d){
+  qtdCard[id] = Math.max(1, (qtdCard[id] || 1) + d);
+  const el = document.getElementById('qtd-' + id);
+  if(el) el.textContent = qtdCard[id];
+}
+
+function comprarCard(id, btn){
+  addAoCarrinho(id, qtdCard[id] || 1, true);
+  if(btn){
+    btn.classList.add('added');
+    btn.textContent = '✓ Adicionado';
+    setTimeout(() => { btn.classList.remove('added'); btn.textContent = 'Adicionar ao carrinho'; }, 1400);
+  }
+}
+
+function toggleFav(id, btn){
+  if(favoritos.has(id)){ favoritos.delete(id); btn.classList.remove('on'); btn.querySelector('svg').setAttribute('fill','none'); }
+  else { favoritos.add(id); btn.classList.add('on'); btn.querySelector('svg').setAttribute('fill','currentColor'); toast('Salvo nos favoritos ♥'); }
+}
+
+/* ============ Carrinho ============ */
+function addAoCarrinho(id, qty = 1, abrirDrawer = true){
+  carrinho[id] = (carrinho[id] || 0) + qty;
+  salvarCarrinho();
+  renderTudo();
+  const badge = document.getElementById('cartBadge');
+  badge.classList.remove('pulse'); void badge.offsetWidth; badge.classList.add('pulse');
+  const p = PRODUTOS.find(x => x.id === id);
+  toast(`${p.nome} adicionado ao carrinho`);
+  if(abrirDrawer) abrirCarrinho();
+}
+
+function addKitCompleto(){
+  PRODUTOS.forEach(p => { carrinho[p.id] = (carrinho[p.id] || 0) + 1; });
+  salvarCarrinho();
+  renderTudo();
+  toast('Kit completo adicionado — 15% OFF + frete grátis!');
+  abrirCarrinho();
+}
+
+function mudarQtd(id, d){
+  carrinho[id] = (carrinho[id] || 0) + d;
+  if(carrinho[id] <= 0) delete carrinho[id];
+  salvarCarrinho();
+  renderTudo();
+}
+
+function removerItem(id){
+  delete carrinho[id];
+  salvarCarrinho();
+  renderTudo();
+  toast('Item removido do carrinho');
+}
+
+function abrirCarrinho(){
+  document.getElementById('drawer').classList.add('on');
+  document.getElementById('overlay').classList.add('on');
+  document.body.classList.add('no-scroll');
+}
+function fecharCarrinho(){
+  document.getElementById('drawer').classList.remove('on');
+  document.getElementById('overlay').classList.remove('on');
+  document.body.classList.remove('no-scroll');
+}
+
+function renderDrawer(){
+  const body = document.getElementById('drawerBody');
+  const foot = document.getElementById('drawerFoot');
+  const list = itens();
+  document.getElementById('drawerCount').textContent = list.length ? `· ${qtdTotal()} ${qtdTotal()===1?'item':'itens'}` : '';
+
+  if(!list.length){
+    body.innerHTML = `
+      <div class="drawer-empty">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h2l2.3 12.3a2 2 0 0 0 2 1.7h7.6a2 2 0 0 0 2-1.6L21 8H6"/><circle cx="9.5" cy="20.6" r="1.4"/><circle cx="17.6" cy="20.6" r="1.4"/></svg>
+        <b>Seu carrinho está vazio</b>
+        <p>Adicione produtos para ganhar descontos especiais.</p>
+        <button class="btn" onclick="fecharCarrinho()" style="margin-top:4px">Ver produtos</button>
+      </div>`;
+    foot.style.display = 'none';
+    return;
+  }
+  foot.style.display = 'block';
+  body.innerHTML = list.map(([id, q]) => {
+    const p = PRODUTOS.find(x => x.id === id);
+    return `
+    <div class="co-item">
+      <img src="${p.img}" alt="${p.nome}">
+      <div class="co-info">
+        <b>${p.nome}</b>
+        <div class="u">${fmt(p.preco)} / un.</div>
+        <div class="co-qty">
+          <button onclick="mudarQtd('${id}',-1)" aria-label="Diminuir">−</button>
+          <span>${q}</span>
+          <button onclick="mudarQtd('${id}',1)" aria-label="Aumentar">+</button>
+          <button class="co-remove" onclick="removerItem('${id}')">Remover</button>
+        </div>
+      </div>
+      <div class="co-price">${fmt(p.preco * q)}</div>
+    </div>`;
+  }).join('');
+
+  /* Progresso do kit */
+  const n = tiposUnicos();
+  const pctKit = Math.min(100, (n / 3) * 100);
+  const kitFill = document.getElementById('kitProgFill');
+  const kitText = document.getElementById('kitProgText');
+  kitFill.style.width = pctKit + '%';
+  document.getElementById('kitProg').classList.toggle('done', n >= 3);
+  if(n >= 3){
+    kitText.innerHTML = '<b>Kit completo!</b> 15% OFF + frete grátis aplicados 🎉';
+  } else if(n === 2){
+    kitText.innerHTML = `Falta <b>1 produto diferente</b> para o kit completo (15% OFF + frete grátis)`;
+  } else {
+    kitText.innerHTML = `Adicione mais <b>${3 - n} produto(s) diferentes</b> para 15% OFF + frete grátis`;
+  }
+
+  /* Progresso do frete */
+  const base = baseComDescontos();
+  const pctShip = Math.min(100, (base / FRETE_GRATIS_MIN) * 100);
+  const shipFill = document.getElementById('shipProgFill');
+  const shipText = document.getElementById('shipProgText');
+  if(frete() === 0 && itens().length){
+    shipFill.style.width = '100%';
+    shipFill.style.background = 'var(--sage)';
+    shipText.innerHTML = '<b>Você ganhou frete grátis!</b>';
+  } else {
+    shipFill.style.width = pctShip + '%';
+    shipFill.style.background = 'var(--gold)';
+    shipText.innerHTML = `Faltam <b>${fmt(Math.max(0, FRETE_GRATIS_MIN - base))}</b> para frete grátis`;
+  }
+
+  /* Cupom */
+  const msg = document.getElementById('promoMsg');
+  const inp = document.getElementById('promoInput');
+  const btn = document.getElementById('promoBtn');
+  if(cupomAtivo){
+    inp.value = CUPOM; inp.disabled = true;
+    btn.textContent = 'Remover';
+    msg.textContent = 'Cupom aplicado: 10% de desconto extra!';
+    msg.className = 'promo-msg ok';
+  } else {
+    inp.disabled = false;
+    btn.textContent = 'Aplicar';
+    msg.textContent = '';
+    msg.className = 'promo-msg';
+  }
+
+  /* Resumo */
+  const sub = subtotal();
+  const dk = descontoKit();
+  const dc = descontoCupom();
+  const fr = frete();
+  document.getElementById('sumSub').textContent = fmt(sub);
+  document.getElementById('rowKit').style.display = dk > 0 ? 'flex' : 'none';
+  document.getElementById('kitPct').textContent = n >= 3 ? '(15%)' : '(5%)';
+  document.getElementById('sumKit').textContent = '- ' + fmt(dk);
+  document.getElementById('rowCupom').style.display = dc > 0 ? 'flex' : 'none';
+  document.getElementById('sumCupom').textContent = '- ' + fmt(dc);
+  document.getElementById('sumFrete').textContent = fr === 0 ? 'Grátis' : fmt(fr);
+  document.getElementById('sumTotal').textContent = fmt(total());
+  document.getElementById('btnCheckout').textContent = 'Finalizar compra · ' + fmt(total());
+}
+
+function aplicarCupom(){
+  if(cupomAtivo){
+    cupomAtivo = false;
+    document.getElementById('promoInput').value = '';
+    renderTudo();
+    toast('Cupom removido');
+    return;
+  }
+  const val = document.getElementById('promoInput').value.trim().toUpperCase();
+  if(val === CUPOM){
+    cupomAtivo = true;
+    renderTudo();
+    toast('Cupom MAGNO10 aplicado: 10% OFF extra!');
+  } else {
+    const msg = document.getElementById('promoMsg');
+    msg.textContent = 'Cupom inválido. Tente MAGNO10.';
+    msg.className = 'promo-msg err';
+  }
+}
+
+/* ============ Quick view ============ */
+function abrirQuick(id){
+  const p = PRODUTOS.find(x => x.id === id);
+  qtdCard[id] = qtdCard[id] || 1;
+  document.getElementById('quickGrid').innerHTML = `
+    <div class="quick-media"><img src="${p.img}" alt="${p.nome}"></div>
+    <div class="quick-info">
+      <div class="card-tag">${p.tag}</div>
+      <h3>${p.nome}</h3>
+      <div class="card-rate"><span class="stars">★★★★★</span><span>${p.nota.toString().replace('.',',')} (${p.avaliacoes} avaliações)</span></div>
+      <p>${p.desc}</p>
+      <div class="price-old">De ${fmt(p.de)}</div>
+      <div class="price-row"><span class="price-new">${fmt(p.preco)}</span></div>
+      <div class="price-inst">ou 3x de ${fmt(p.preco/3)} sem juros</div>
+      <ul class="quick-hl">${p.destaques.map(d => `<li>${d}</li>`).join('')}</ul>
+      <div class="quick-actions">
+        <div class="stepper">
+          <button onclick="mudarQtdCard('${id}',-1)" aria-label="Diminuir">−</button>
+          <span id="qtd-${id}">${qtdCard[id]}</span>
+          <button onclick="mudarQtdCard('${id}',1)" aria-label="Aumentar">+</button>
+        </div>
+        <button class="btn-buy" onclick="comprarCard('${id}', this); fecharQuick();">Adicionar ao carrinho</button>
+      </div>
+    </div>`;
+  document.getElementById('quickModal').classList.add('on');
+  document.body.classList.add('no-scroll');
+}
+function fecharQuick(){
+  document.getElementById('quickModal').classList.remove('on');
+  if(!document.getElementById('drawer').classList.contains('on') && !document.getElementById('checkoutModal').classList.contains('on')) document.body.classList.remove('no-scroll');
+}
+
+/* ============ Checkout ============ */
+function abrirCheckout(){
+  if(!itens().length){ toast('Adicione produtos ao carrinho primeiro'); return; }
+  fecharCarrinho();
+  renderCheckoutResumo();
+  document.getElementById('checkoutModal').classList.add('on');
+  document.body.classList.add('no-scroll');
+}
+function fecharCheckout(){
+  document.getElementById('checkoutModal').classList.remove('on');
+  document.body.classList.remove('no-scroll');
+}
+
+function renderCheckoutResumo(){
+  document.getElementById('checkItems').innerHTML = itens().map(([id,q]) => {
+    const p = PRODUTOS.find(x => x.id === id);
+    return `<div class="check-item"><span>${p.nome} × ${q}</span><b>${fmt(p.preco*q)}</b></div>`;
+  }).join('');
+  const n = tiposUnicos();
+  document.getElementById('coSub').textContent = fmt(subtotal());
+  document.getElementById('coRowKit').style.display = descontoKit() > 0 ? 'flex' : 'none';
+  document.getElementById('coKit').textContent = '- ' + fmt(descontoKit());
+  document.getElementById('coRowCupom').style.display = descontoCupom() > 0 ? 'flex' : 'none';
+  document.getElementById('coCupom').textContent = '- ' + fmt(descontoCupom());
+  document.getElementById('coFrete').textContent = frete() === 0 ? 'Grátis' : fmt(frete());
+  document.getElementById('coTotal').textContent = fmt(total());
+}
+
+document.querySelectorAll('.pay-opt').forEach(el => {
+  el.addEventListener('click', () => {
+    document.querySelectorAll('.pay-opt').forEach(o => o.classList.remove('on'));
+    el.classList.add('on');
+  });
+});
+
+document.getElementById('checkoutForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const pag = document.querySelector('input[name="pag"]:checked');
+  const totalFinal = total();
+  const numPedido = 'MG-' + String(Date.now()).slice(-6);
+  carrinho = {};
+  cupomAtivo = false;
+  salvarCarrinho();
+  renderTudo();
+  document.getElementById('checkoutBody').innerHTML = `
+    <div class="success">
+      <div class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></div>
+      <h3>Pedido confirmado!</h3>
+      <p>Obrigado pela compra. Enviamos os detalhes para o seu e-mail.</p>
+      <div class="ord">Pedido <b>${numPedido}</b> · Pagamento via <b>${pag ? pag.value : 'PIX'}</b><br>Total: <b>${fmt(totalFinal)}</b></div>
+      <p style="font-size:12px">Você receberá o código de rastreio em até 24h úteis.</p>
+      <button class="btn" style="margin-top:14px" onclick="fecharCheckout(); location.reload();">Voltar à loja</button>
+    </div>`;
+});
+
+/* ============ Busca e ordenação ============ */
+document.getElementById('searchInput').addEventListener('input', renderProdutos);
+document.getElementById('sortSelect').addEventListener('change', renderProdutos);
+
+/* ============ Render geral ============ */
+function renderTudo(){
+  const q = qtdTotal();
+  const badge = document.getElementById('cartBadge');
+  badge.textContent = q;
+  badge.classList.toggle('on', q > 0);
+  renderDrawer();
+}
+
+/* ============ UI geral ============ */
+document.getElementById('cartBtn').addEventListener('click', abrirCarrinho);
+document.getElementById('burger').addEventListener('click', () => {
+  document.getElementById('colecao').scrollIntoView({behavior:'smooth'});
+});
+
+window.addEventListener('scroll', () => {
+  document.getElementById('header').classList.toggle('scrolled', window.scrollY > 8);
+}, {passive:true});
+
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape'){ fecharCarrinho(); fecharQuick(); fecharCheckout(); }
+});
+
+document.getElementById('newsForm').addEventListener('submit', e => {
+  e.preventDefault();
+  toast('Cadastro realizado! Obrigado por acompanhar a Magno.');
+  e.target.reset();
+});
+
+/* Reveal on scroll */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(en => { if(en.isIntersecting){ en.target.classList.add('vis'); io.unobserve(en.target); } });
+}, {threshold:.12});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* Marquee duplicado para loop perfeito */
+const track = document.getElementById('mqTrack');
+track.innerHTML += track.innerHTML;
+
+/* Init */
+renderProdutos();
+renderTudo();
+</script>
+</body>
+</html>
